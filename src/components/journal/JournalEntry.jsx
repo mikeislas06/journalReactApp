@@ -19,7 +19,7 @@ const JournalEntry = ({ id, date, title, body, url }) => {
       onClick={handleEntryClick}>
       {url && (
         <div className="journal__entry-picture">
-          <img src={`${url}`} alt="journal miniature picture" />
+          <img src={`${url}`} alt="journal miniature" />
         </div>
       )}
       <div className='journal__entry-body'>
