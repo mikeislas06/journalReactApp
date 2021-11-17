@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import { activeNote } from '../../actions/notes.actions';
+import { activeNote, startDeleting } from '../../actions/notes.actions';
 import { useForm } from '../../hooks/useForm';
 import NotesAppbar from './NotesAppbar';
 
@@ -12,7 +12,7 @@ const NoteScreen = () => {
 
   const [formValues, handleInputChange, reset] = useForm(note);
 
-  const { title, body } = formValues;
+  const { title, body, id } = formValues;
 
   const activeId = useRef(note.id);
 
@@ -26,6 +26,10 @@ const NoteScreen = () => {
   useEffect(() => {
     dispatch(activeNote(formValues.id, { ...formValues }));
   }, [formValues, dispatch]);
+
+  const handleDelete = () => {
+    dispatch(startDeleting(id));
+  };
 
   return (
     <div className='notes__main-content'>
@@ -53,13 +57,14 @@ const NoteScreen = () => {
 
         {note.url && (
           <div className='notes__image'>
-            <img
-              src='https://www.viajarsanfrancisco.com/img/que-visitar-en-san-francisco.jpg'
-              alt='imagen de San Fracisco'
-            />
+            <img src={note.url} alt='imagen de San Fracisco' />
           </div>
         )}
       </div>
+
+      <button className='btn btn-danger' onClick={handleDelete}>
+        Delete
+      </button>
     </div>
   );
 };

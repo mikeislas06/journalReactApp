@@ -13,7 +13,12 @@ import { finishLoading, startLoading } from './ui.actions';
 
 // Swet Alert
 import Swal from 'sweetalert2';
+
+//
 import { errorHandler } from '../errorHandler/errorHandler';
+
+// Notes actions
+import { noteLogout } from './notes.actions';
 
 export const startLoginEmailPassword = (email, password) => {
   return (dispatch) => {
@@ -75,6 +80,7 @@ export const startLogout = () => {
     const auth = getAuth(firebaseApp);
     await signOut(auth);
     dispatch(logout());
+    dispatch(noteLogout());
   };
 };
 

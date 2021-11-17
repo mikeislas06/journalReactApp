@@ -31,6 +31,15 @@
   }
 }
 
+.btn-danger {
+  background-color: red;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: darken($color: red, $amount: 15);
+  }
+}
+
 .btn-block {
   width: 100%;
 }
