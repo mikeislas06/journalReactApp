@@ -26,7 +26,11 @@ const Sidebar = () => {
           <span> {name}</span>
         </h3>
 
-        <button className='btn' onClick={handleLogout}>
+        <button
+          className='btn'
+          style={{ marginTop: '17px' }}
+          onClick={handleLogout}
+        >
           Logout
         </button>
       </div>
